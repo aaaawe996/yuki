@@ -1,0 +1,136 @@
+body {
+  font-family: "Yu Gothic", sans-serif;
+  background: #fff0f5;
+  color: #333;
+  margin: 2em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2 {
+  color: #d471a3;
+  border-bottom: 2px solid #f8cce7;
+  padding-bottom: 0.3em;
+  margin-top: 1.5em;
+}
+
+form {
+  margin-bottom: 1.5em;
+}
+
+input, textarea {
+  padding: 0.6em;
+  margin: 0.4em 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #e8b4c9;
+  background: #fffafc;
+  font-size: 1em;
+}
+
+button {
+  padding: 0.5em 1em;
+  background: #ffc6d9;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #444;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+button:hover {
+  background: #fcaecb;
+}
+
+.thread {
+  background: #fdf6ff;
+  padding: 1em;
+  margin-bottom: 0.6em;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #e8c1e6;
+}
+
+.comment {
+  background: #fefefe;
+  margin: 0.5em 0;
+  padding: 0.6em;
+  border-radius: 6px;
+  border-left: 4px solid #ffd1e0;
+}
+
+.deleted {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.comment-history {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 0.5em;
+}
+
+.thread-button {
+  float: right;
+  margin-left: 10px;
+  background-color: #ffbdbd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.thread-button:hover {
+  background-color: #e38d8d;
+}
+
+.deleted-thread {
+  opacity: 0.7;
+  font-style: italic;
+  background: #fff6f8;
+  border: 1px dashed #f5c6cb;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 10px;
+}
+
+#deletedContainer {
+  background: #fff8fa;
+  padding: 1em;
+  border-radius: 12px;
+  margin-top: 2em;
+  border: 1px solid #f2c2cc;
+}
+
+.toggle-btn {
+  background: #f5b8d1;
+  border-radius: 6px;
+  font-size: 0.9em;
+  padding: 0.3em 0.6em;
+  margin-bottom: 1em;
+}
+
+#searchSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 1em;
+}
+
+#searchInput {
+  flex: 1;
+}
+
+.comment img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 0.5em;
+  border-radius: 6px;
+}

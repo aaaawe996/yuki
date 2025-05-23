@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>yukiBBS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>遅刻yukiBBS</h1>
+
+  <!-- スレッド作成 -->
+  <form id="threadForm">
+    <input type="text" id="threadTitle" placeholder="スレッドタイトル " required />
+    <button type="submit">作成</button>
+  </form>
+
+  <!-- 検索・並び替え -->
+  <div id="searchSort">
+    <input type="text" id="searchInput" placeholder="🔍 スレッド検索..." />
+    <button id="sortButton">📅 並び替え: 新しい順</button>
+  </div>
+
+  <!-- スレッド一覧 -->
+  <h2>スレッド一覧</h2>
+  <div id="threadList"></div>
+
+  <!-- 削除スレッド折りたたみ -->
+  <div id="deletedContainer">
+    <h2>🗑 削除されたスレッド</h2>
+    <button class="toggle-btn" onclick="toggleDeletedThreads()">▼ 表示</button>
+    <div id="deletedThreadList" style="display: none;"></div>
+  </div>
+
+  <!-- スレッド表示 -->
+  <div id="threadView" style="display:none;">
+    <h2 id="threadTitleView"></h2>
+    <div id="comments"></div>
+    
+    <!-- コメント投稿 -->
+    <form id="commentForm">
+      <input type="text" id="name" placeholder="名前 " required />
+      <textarea id="comment" placeholder="コメント 💬" required></textarea>
+      <input type="file" id="imageInput" accept="image/*" />
+      <button type="submit">投稿</button>
+    </form>
+    <button onclick="goBack()">← 戻る</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
