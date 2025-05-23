@@ -85,4 +85,55 @@ function createThread() {
       document.getElementById('content').value = '';
       document.getElementById('image').value = '';
     };
-    reader.readAsDa
+    reader.readAsDataURL(imageInput.files[0]);
+  } else {
+    threads.unshift({ title, content, image });
+    saveThreads();
+    loadThreads();
+    document.getElementById('title').value = '';
+    document.getElementById('content').value = '';
+    document.getElementById('image').value = '';
+  }
+}
+
+function deleteThread(index) {
+  const password = prompt("このスレッドを削除するにはパスワードを入力してください:");
+  if (password !== "082506") {
+    alert("パスワードが違います。");
+    return;
+  }
+
+  const deleted = threads.splice(index, 1)[0];
+  deleted.deletedAt = new Date().toISOString();
+  deletedThreads.unshift(deleted);
+  saveThreads();
+  loadThreads();
+  loadDeletedThreads();
+}
+
+function permanentlyDelete(index) {
+  deletedThreads.splice(index, 1);
+  saveThreads();
+  loadDeletedThreads();
+}
+
+function sortThreads() {
+  const value = document.getElementById('sort').value;
+  if (value === 'newest') {
+    displayThreads([...threads]);
+  } else {
+    displayThreads([...threads].reverse());
+  }
+}
+
+function searchThreads() {
+  const query = document.getElementById('search').value.toLowerCase();
+  const results = threads.filter(
+    (t) =>
+      t.title.toLowerCase().includes(query) ||
+      t.content.toLowerCase().includes(query)
+  );
+  displayThreads(results);
+}
+
+window.onload = loadThreads;

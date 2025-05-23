@@ -1,136 +1,90 @@
 body {
-  font-family: "Yu Gothic", sans-serif;
-  background: #fff0f5;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8f0;
   color: #333;
-  margin: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  padding: 20px;
 }
 
 h1, h2 {
-  color: #d471a3;
-  border-bottom: 2px solid #f8cce7;
-  padding-bottom: 0.3em;
-  margin-top: 1.5em;
+  text-align: center;
+  color: #7b5e7b;
 }
 
-form {
-  margin-bottom: 1.5em;
+.form, .controls {
+  margin-bottom: 20px;
+  background: #fff0f5;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-input, textarea {
-  padding: 0.6em;
-  margin: 0.4em 0;
+input[type="text"], textarea, select {
   width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid #e8b4c9;
-  background: #fffafc;
-  font-size: 1em;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+  height: 80px;
 }
 
 button {
-  padding: 0.5em 1em;
-  background: #ffc6d9;
+  background: #ffc0cb;
+  color: #fff;
+  padding: 10px 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
   cursor: pointer;
-  color: #444;
-  font-weight: bold;
-  margin-top: 0.5em;
+  font-size: 14px;
 }
 
 button:hover {
-  background: #fcaecb;
+  background: #f48fb1;
 }
 
 .thread {
-  background: #fdf6ff;
-  padding: 1em;
-  margin-bottom: 0.6em;
-  border-radius: 12px;
-  cursor: pointer;
-  position: relative;
-  border: 1px solid #e8c1e6;
-}
-
-.comment {
-  background: #fefefe;
-  margin: 0.5em 0;
-  padding: 0.6em;
-  border-radius: 6px;
-  border-left: 4px solid #ffd1e0;
-}
-
-.deleted {
-  opacity: 0.6;
-  font-style: italic;
-}
-
-.comment-history {
-  font-size: 0.8em;
-  color: #999;
-  margin-top: 0.5em;
-}
-
-.thread-button {
-  float: right;
-  margin-left: 10px;
-  background-color: #ffbdbd;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.thread-button:hover {
-  background-color: #e38d8d;
-}
-
-.deleted-thread {
-  opacity: 0.7;
-  font-style: italic;
-  background: #fff6f8;
-  border: 1px dashed #f5c6cb;
-  padding: 1em;
-  margin-bottom: 0.5em;
+  background: #e0f7fa;
+  padding: 15px;
+  margin-bottom: 15px;
   border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
 }
 
-#deletedContainer {
-  background: #fff8fa;
-  padding: 1em;
-  border-radius: 12px;
-  margin-top: 2em;
-  border: 1px solid #f2c2cc;
-}
-
-.toggle-btn {
-  background: #f5b8d1;
-  border-radius: 6px;
-  font-size: 0.9em;
-  padding: 0.3em 0.6em;
-  margin-bottom: 1em;
-}
-
-#searchSort {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1em;
-  gap: 1em;
-}
-
-#searchInput {
-  flex: 1;
-}
-
-.comment img {
+.thread img {
   max-width: 100%;
-  height: auto;
-  margin-top: 0.5em;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.thread.deleted {
+  background: #ffe0e0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #d84315;
+  margin-bottom: 8px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+.buttons {
+  margin-top: 10px;
 }
