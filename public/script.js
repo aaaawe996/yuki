@@ -16,17 +16,17 @@ function loadThreads() {
       threads = data.threads || [];
       deletedThreads = data.deletedThreads || [];
       displayThreads();
-      loadDeletedThreads();
+      displayDeletedThreads();
     });
 }
 
-function displayThreads(filteredThreads = threads) {
+function displayThreads(filtered = threads) {
   const threadList = document.getElementById('threadList');
   threadList.innerHTML = '';
-  filteredThreads.forEach((thread, index) => {
-    const threadDiv = document.createElement('div');
-    threadDiv.className = 'thread';
-    threadDiv.innerHTML = `
+  filtered.forEach((thread, index) => {
+    const div = document.createElement('div');
+    div.className = 'thread';
+    div.innerHTML = `
       <h3>${thread.title}</h3>
       <p>${thread.content}</p>
       ${thread.image ? `<img src="${thread.image}" alt="Image">` : ''}
@@ -34,22 +34,20 @@ function displayThreads(filteredThreads = threads) {
         <button onclick="deleteThread(${index})">削除</button>
       </div>
     `;
-    threadList.appendChild(threadDiv);
+    threadList.appendChild(div);
   });
 }
 
-function loadDeletedThreads() {
-  const deletedContainer = document.getElementById('deletedThreads');
-  deletedContainer.innerHTML = '';
+function displayDeletedThreads() {
+  const deletedList = document.getElementById('deletedThreads');
+  deletedList.innerHTML = '';
   deletedThreads.forEach((thread, index) => {
-    const wrapper = document.createElement('details');
+    const details = document.createElement('details');
+    details.className = 'thread deleted';
     const summary = document.createElement('summary');
     summary.textContent = `${thread.title}（削除済み）`;
-    wrapper.appendChild(summary);
-
-    const div = document.createElement('div');
-    div.className = 'thread deleted';
-    div.innerHTML = `
+    const content = document.createElement('div');
+    content.innerHTML = `
       <p>${thread.content}</p>
       ${thread.image ? `<img src="${thread.image}" alt="Image">` : ''}
       <p class="timestamp">削除日時: ${new Date(thread.deletedAt).toLocaleString()}</p>
@@ -57,8 +55,9 @@ function loadDeletedThreads() {
         <button onclick="permanentlyDelete(${index})">完全削除</button>
       </div>
     `;
-    wrapper.appendChild(div);
-    deletedContainer.appendChild(wrapper);
+    details.appendChild(summary);
+    details.appendChild(content);
+    deletedList.appendChild(details);
   });
 }
 
@@ -68,66 +67,63 @@ function createThread() {
   const imageInput = document.getElementById('image');
   let image = '';
 
+  if (!title || !content) return alert("タイトルと内容を入力してください");
+
   if (imageInput.files && imageInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
       image = e.target.result;
       threads.unshift({ title, content, image });
-      saveThreads();
-      loadThreads();
-      document.getElementById('title').value = '';
-      document.getElementById('content').value = '';
-      document.getElementById('image').value = '';
+      saveAndReload();
     };
     reader.readAsDataURL(imageInput.files[0]);
   } else {
     threads.unshift({ title, content, image });
-    saveThreads();
-    loadThreads();
-    document.getElementById('title').value = '';
-    document.getElementById('content').value = '';
-    document.getElementById('image').value = '';
+    saveAndReload();
   }
 }
 
 function deleteThread(index) {
-  const password = prompt("このスレッドを削除するにはパスワードを入力してください:");
+  const password = prompt("削除パスワードを入力してください（082506）:");
   if (password !== "082506") {
     alert("パスワードが違います。");
     return;
   }
-
   const deleted = threads.splice(index, 1)[0];
   deleted.deletedAt = new Date().toISOString();
   deletedThreads.unshift(deleted);
-  saveThreads();
-  loadThreads();
-  loadDeletedThreads();
+  saveAndReload();
 }
 
 function permanentlyDelete(index) {
   deletedThreads.splice(index, 1);
+  saveAndReload();
+}
+
+function saveAndReload() {
   saveThreads();
-  loadDeletedThreads();
+  displayThreads();
+  displayDeletedThreads();
+  document.getElementById('title').value = '';
+  document.getElementById('content').value = '';
+  document.getElementById('image').value = '';
 }
 
 function sortThreads() {
-  const value = document.getElementById('sort').value;
-  if (value === 'newest') {
-    displayThreads([...threads]);
-  } else {
-    displayThreads([...threads].reverse());
-  }
+  const option = document.getElementById('sort').value;
+  const sorted = [...threads];
+  if (option === 'oldest') sorted.reverse();
+  displayThreads(sorted);
 }
 
 function searchThreads() {
   const query = document.getElementById('search').value.toLowerCase();
-  const results = threads.filter(
+  const filtered = threads.filter(
     (t) =>
       t.title.toLowerCase().includes(query) ||
       t.content.toLowerCase().includes(query)
   );
-  displayThreads(results);
+  displayThreads(filtered);
 }
 
 window.onload = loadThreads;
