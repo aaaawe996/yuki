@@ -1,90 +1,79 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #fff8f0;
+  font-family: sans-serif;
+  background: #fefaff;
   color: #333;
-  margin: 0;
-  padding: 0;
+  padding: 1em;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-h1, h2 {
+header {
+  background: #f8d1ff;
+  padding: 1em;
   text-align: center;
-  color: #7b5e7b;
-}
-
-.form, .controls {
-  margin-bottom: 20px;
-  background: #fff0f5;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-input[type="text"], textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 14px;
 }
 
-textarea {
-  resize: vertical;
-  height: 80px;
+.form-section,
+.controls {
+  margin: 1em 0;
+  padding: 1em;
+  background: #fff0f5;
+  border-radius: 8px;
+}
+
+input[type="text"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-  background: #ffc0cb;
-  color: #fff;
-  padding: 10px 16px;
+  background-color: #ffd1dc;
   border: none;
-  border-radius: 8px;
-  margin-top: 10px;
+  padding: 0.5em 1em;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 button:hover {
-  background: #f48fb1;
+  background-color: #ffb6c1;
 }
 
 .thread {
-  background: #e0f7fa;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+  background: #fff;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-left: 5px solid #ffd1dc;
+  border-radius: 4px;
 }
 
 .thread img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-top: 10px;
+  max-width: 200px;
+  display: block;
+  margin-top: 0.5em;
 }
 
-.thread.deleted {
-  background: #ffe0e0;
+.deleted {
+  background: #eee;
+}
+
+.replies {
+  margin-top: 1em;
+  background: #fff8fc;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #666;
 }
 
 details summary {
   cursor: pointer;
   font-weight: bold;
-  color: #d84315;
-  margin-bottom: 8px;
-}
-
-.timestamp {
-  font-size: 12px;
-  color: #888;
-}
-
-.buttons {
-  margin-top: 10px;
 }
